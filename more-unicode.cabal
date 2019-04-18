@@ -46,7 +46,13 @@ cabal-version:       >=1.10
 library
   ghc-options:     -W -Wall -fhelpful-errors
   -- Modules exported by the library.
-  exposed-modules: Data.MoreUnicode.Lens, Data.MoreUnicode.Tasty
+  exposed-modules: Data.MoreUnicode.Applicative
+                 , Data.MoreUnicode.Functor
+                 , Data.MoreUnicode.Lens
+                 , Data.MoreUnicode.List
+                 , Data.MoreUnicode.Monad
+                 , Data.MoreUnicode.Natural
+                 , Data.MoreUnicode.Tasty
 
   -- modules included in this library but not exported.
   other-modules:
