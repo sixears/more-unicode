@@ -7,7 +7,7 @@ name:                more-unicode
 -- PVP summary:      +-+------- breaking API changes
 --                   | | +----- non-breaking API additions
 --                   | | | +--- code changes with no API change
-version:             0.0.0.1
+version:             0.0.1.0
 
 -- A short (one-line) description of the package.
 synopsis:            More unicode symbols
@@ -62,7 +62,7 @@ library
   other-extensions:
 
   -- Other library packages from which modules are imported.
-  build-depends: base, lens, tasty-hunit, tasty-quickcheck
+  build-depends: base, base-unicode-symbols, lens, tasty-hunit, tasty-quickcheck
 
   -- Directories containing source files.
   hs-source-dirs:      src
