@@ -7,7 +7,7 @@ name:                more-unicode
 -- PVP summary:      +-+------- breaking API changes
 --                   | | +----- non-breaking API additions
 --                   | | | +--- code changes with no API change
-version:             0.0.3.0
+version:             0.0.4.0
 
 -- A short (one-line) description of the package.
 synopsis:            More unicode symbols
@@ -47,6 +47,7 @@ library
   ghc-options:     -W -Wall -fhelpful-errors
   -- Modules exported by the library.
   exposed-modules: Data.MoreUnicode.Applicative
+                 , Data.MoreUnicode.Function
                  , Data.MoreUnicode.Functor
                  , Data.MoreUnicode.Lens
                  , Data.MoreUnicode.List
