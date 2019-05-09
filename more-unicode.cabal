@@ -7,7 +7,7 @@ name:                more-unicode
 -- PVP summary:      +-+------- breaking API changes
 --                   | | +----- non-breaking API additions
 --                   | | | +--- code changes with no API change
-version:             0.0.4.0
+version:             0.0.5.0
 
 -- A short (one-line) description of the package.
 synopsis:            More unicode symbols
@@ -52,6 +52,7 @@ library
                  , Data.MoreUnicode.Lens
                  , Data.MoreUnicode.List
                  , Data.MoreUnicode.Monad
+                 , Data.MoreUnicode.MonoTraversable
                  , Data.MoreUnicode.Natural
                  , Data.MoreUnicode.Semigroup
                  , Data.MoreUnicode.Tasty
@@ -64,7 +65,8 @@ library
   other-extensions:
 
   -- Other library packages from which modules are imported.
-  build-depends: base, base-unicode-symbols, lens, tasty-hunit, tasty-quickcheck
+  build-depends: base, base-unicode-symbols, lens, mono-traversable, tasty-hunit
+               , tasty-quickcheck
 
   -- Directories containing source files.
   hs-source-dirs:      src
