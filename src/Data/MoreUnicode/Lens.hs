@@ -2,7 +2,7 @@
 {-# LANGUAGE UnicodeSyntax    #-}
 
 module Data.MoreUnicode.Lens
-  ( (⊣), (⊥), (⊢), (⊧), (⩼), (##), (⋖), (⋗), tindex )
+  ( (⊣), (⊥), (⊢), (⊧), (⊩), (⩼), (##), (⋖), (⋗), tindex )
 where
 
 import Prelude  ( Int, fromIntegral )
@@ -26,7 +26,7 @@ import Control.Lens.Fold       ( (^?) )
 import Control.Lens.Getter     ( Getting, (^.) )
 import Control.Lens.Indexed    ( Indexable, index )
 import Control.Lens.Review     ( AReview, (#) )
-import Control.Lens.Setter     ( ASetter, (.~), (%~) )
+import Control.Lens.Setter     ( ASetter, (.~), (%~), (?~) )
 import Control.Lens.Traversal  ( traversed )
 
 ------------------------------------------------------------
@@ -48,6 +48,13 @@ infixr 4 ⊢
 infixr 4 ⊧
 (⊧) ∷ ASetter σ τ α β → (α → β) → σ → τ
 (⊧) = (%~)
+
+{- | Alias of `(?~)`.  Set the target of a Lens, Traversal or Setter to Just a
+     value. -}
+
+infixr 4 ⊩
+(⊩) ∷ ASetter σ τ α (Maybe β) → β → σ → τ
+(⊩) = (?~)
 
 infixl 8 ⩼
 (⩼) ∷ σ → Getting (First α) σ α → Maybe α
