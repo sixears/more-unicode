@@ -2,7 +2,7 @@
 {-# LANGUAGE UnicodeSyntax    #-}
 
 module Data.MoreUnicode.Lens
-  ( (⊣), (⊥), (⊢), (⊧), (⊩), (⩼), (##), (⋖), (⋗), tindex )
+  ( (⊣), (⫣), (⊥), (⊢), (⊧), (⊩), (⩼), (##), (⋖), (⋗), tindex )
 where
 
 import Prelude  ( Int, fromIntegral )
@@ -37,9 +37,15 @@ import Data.MoreUnicode.Natural  ( ℕ )
 
 --------------------------------------------------------------------------------
 
+{- | Unicode alias for `(^.)` -}
 infixl 8 ⊣
 (⊣) ∷ δ → Getting α δ α → α
 (⊣) = (^.)
+
+{- | Reversal of `(⊣)` for isos; that is, equivalent to `x ^. from l` -}
+infixl 8 ⫣
+(⫣) ∷ δ → AnIso δ δ α α → α
+d (⫣) l = d ^. from l
 
 infixr 4 ⊢
 (⊢) ∷ ASetter σ τ α β → β → σ → τ
