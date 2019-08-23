@@ -25,6 +25,7 @@ import Control.Lens.Cons       ( Cons, Snoc, (|>), (<|) )
 import Control.Lens.Fold       ( (^?) )
 import Control.Lens.Getter     ( Getting, (^.) )
 import Control.Lens.Indexed    ( Indexable, index )
+import Control.Lens.Iso        ( AnIso, from )
 import Control.Lens.Review     ( AReview, (#) )
 import Control.Lens.Setter     ( ASetter, (.~), (%~), (?~) )
 import Control.Lens.Traversal  ( traversed )
@@ -44,8 +45,8 @@ infixl 8 ⊣
 
 {- | Reversal of `(⊣)` for isos; that is, equivalent to `x ^. from l` -}
 infixl 8 ⫣
-(⫣) ∷ δ → AnIso δ δ α α → α
-d (⫣) l = d ^. from l
+(⫣) ∷ δ → AnIso α α δ δ → α
+d ⫣ l = d ^. from l
 
 infixr 4 ⊢
 (⊢) ∷ ASetter σ τ α β → β → σ → τ
