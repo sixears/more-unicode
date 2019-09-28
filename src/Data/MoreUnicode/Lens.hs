@@ -2,7 +2,7 @@
 {-# LANGUAGE UnicodeSyntax    #-}
 
 module Data.MoreUnicode.Lens
-  ( (⊣), (⫣), (⊥), (⊢), (⊧), (⊩), (⩼), (##), (⋖), (⋗), tindex )
+  ( (⊣), (⫣), (⫥), (⊥), (⊢), (⊧), (⊩), (⩼), (##), (⋖), (⋗), tindex )
 where
 
 import Prelude  ( Int, fromIntegral )
@@ -48,6 +48,11 @@ infixl 8 ⫣
 (⫣) ∷ δ → AnIso α α δ δ → α
 d ⫣ l = d ^. from l
 
+{- | Getter for prisms; use `object ⫥ prism` to get the value. -}
+infixr 8 ⫥
+(⫥) ∷ α → AReview δ α → δ
+(⫥) = flip (#)
+
 infixr 4 ⊢
 (⊢) ∷ ASetter σ τ α β → β → σ → τ
 (⊢) = (.~)
@@ -67,6 +72,7 @@ infixl 8 ⩼
 (⩼) ∷ σ → Getting (First α) σ α → Maybe α
 (⩼) = (^?)
 
+{- | DEPRECATED (##) "use `⫥` instead" -}
 infixr 8 ##
 (##) ∷ α → AReview δ α → δ
 (##) = flip (#)

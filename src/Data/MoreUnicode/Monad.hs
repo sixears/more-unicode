@@ -42,14 +42,14 @@ infixr 1 ⋘
 (⋘) ∷ Monad η ⇒ (β → η γ) → (α → η β) → α → η γ
 (⋘) = (<=<)
 
-{- | a bit like `(=<<)` / `(⩤)`, but allows the rhs to be a function itself
-     for point-free styling
+{- | A bit like `(=<<)` / `(⊲)`, but allows the rhs to be a function itself
+     for point-free styling.
 -}
 (⩤) ∷ (Monad η, Functor ψ) ⇒ (α → η β) → ψ (η α) → ψ (η β)
 x ⩤ y = fmap (x ≪) y
 
-{- | a bit like `(>>=)` / `(⩥)`, but allows the rhs to be a function itself
-     for point-free styling
+{- | A bit like `(>>=)` / `(⊳)`, but allows the rhs to be a function itself
+     for point-free styling.
 -}
 (⩥) ∷ (Monad η, Functor ψ) ⇒ ψ (η α) → (α → η β) → ψ (η β)
 x ⩥ y = fmap (≫ y) x
