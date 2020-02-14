@@ -1,3 +1,7 @@
+0.0.10.0 2020-02-14
+===================
+- deprecated (≟) in favour of TastyPlus; add 𝔹
+
 0.0.9.0 2019-09-28
 ==================
 - add Lens (⫥), replacing (##)
