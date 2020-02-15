@@ -23,7 +23,7 @@ import Test.Tasty.QuickCheck  ( Property, (===) )
      the 'got' or 'actual' value as the last argument, to allow for easier
      partial application.
  -}
-{- | DEPRECATED (≟) "use `TastyPlus.(≟)` or (@=?) instead" -}
+{-# DEPRECATED (≟) "use `TastyPlus.(≟)` or (@=?) instead" #-}
 infix 1 ≟
 (≟) ∷ (Eq α, Show α) ⇒ α → α → Assertion
 (≟) = (@=?)

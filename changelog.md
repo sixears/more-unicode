@@ -1,3 +1,7 @@
+- 0.0.10.1 2020-02-15
+=====================
+- fix deprecation for (≟)
+
 0.0.10.0 2020-02-14
 ===================
 - deprecated (≟) in favour of TastyPlus; add 𝔹
