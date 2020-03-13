@@ -2,7 +2,8 @@
 {-# LANGUAGE UnicodeSyntax    #-}
 
 module Data.MoreUnicode.Lens
-  ( (⊣), (⫣), (⫥), (⊥), (⊢), (⊧), (⊩), (⩼), (##), (⋖), (⋗), tindex )
+  ( (⊣), (⫣), (⫥), (⊥), (⊢), (⊧), (⊩), (⩼), (⊮), (##), (⋖), (⋗)
+  , addMaybe, tindex )
 where
 
 import Prelude  ( Int, fromIntegral )
@@ -34,7 +35,8 @@ import Control.Lens.Traversal  ( traversed )
 --                     local imports                      --
 ------------------------------------------------------------
 
-import Data.MoreUnicode.Natural  ( ℕ )
+import Data.MoreUnicode.Applicative  ( (∤) )
+import Data.MoreUnicode.Natural      ( ℕ )
 
 --------------------------------------------------------------------------------
 
@@ -71,6 +73,13 @@ infixr 4 ⊩
 infixl 8 ⩼
 (⩼) ∷ σ → Getting (First α) σ α → Maybe α
 (⩼) = (^?)
+
+addMaybe ∷ ASetter σ τ (Maybe α) (Maybe α) → Maybe α → σ → τ
+addMaybe s a = s ⊧ (∤ a)
+
+infixr 4 ⊮
+(⊮) ∷ ASetter σ τ (Maybe α) (Maybe α) → Maybe α → σ → τ
+(⊮) = addMaybe
 
 {- | DEPRECATED (##) "use `⫥` instead" -}
 infixr 8 ##
