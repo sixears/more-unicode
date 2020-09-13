@@ -1,7 +1,7 @@
 {-# LANGUAGE UnicodeSyntax #-}
 
 module Data.MoreUnicode.Functor
-  ( (⊳), (⊲), (⩺) )
+  ( (⊳), (⊳⊳), (⊳⊳⊳), (⊲), (⩺) )
 where
 
 import Prelude ()
@@ -16,9 +16,26 @@ import Data.Function.Unicode  ( (∘) )
 
 -------------------------------------------------------------------------------
 
+{- | Unicode operator alias for `fmap` (`<$>`). -}
 infixl 4 ⊳
 (⊳) ∷ Functor ψ ⇒ (α → β) → ψ α → ψ β
 (⊳) = fmap
+
+----------------------------------------
+
+{- | Unicode operator alias for `fmap ∘ fmap`. -}
+infixl 4 ⊳⊳
+(⊳⊳) ∷ (Functor ψ, Functor φ) ⇒ (α → β) → φ (ψ α) → φ (ψ β)
+(⊳⊳) = fmap ∘ fmap
+
+----------------------------------------
+
+{- | Unicode operator alias for `fmap ∘ fmap ∘ fmap`. -}
+infixl 4 ⊳⊳⊳
+(⊳⊳⊳) ∷ (Functor ψ, Functor φ, Functor ζ) ⇒ (α → β) → ζ (φ (ψ α)) → ζ (φ (ψ β))
+(⊳⊳⊳) = fmap ∘ fmap ∘ fmap
+
+----------------------------------------
 
 -- | Like `(⊳)`, but with the arguments flipped.  This might be useful, for
 --   example as an infix version of `liftM`.  Designed to have similar flow to
