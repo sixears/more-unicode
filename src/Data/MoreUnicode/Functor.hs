@@ -1,7 +1,7 @@
 {-# LANGUAGE UnicodeSyntax #-}
 
 module Data.MoreUnicode.Functor
-  ( (⊳), (⊳⊳), (⊳⊳⊳), (⊲), (⩺) )
+  ( (<$$>), (⊳), (⊳⊳), (⊳⊳⊳), (⊲), (⩺) )
 where
 
 import Prelude ()
@@ -51,11 +51,11 @@ as ⊲ f = fmap f as
 {- | Functor combinator to lift f and fmap it across the result of g.
      This may be particularly useful for lifting into a monad, with
      mono-unsaturated functions (i.e., for point-free style; e.g.,
-     
+
        \ fn -> length <$> readFile fn
-  
-    may be re-written as 
-  
+
+    may be re-written as
+
        length <$$> readFile
  -}
 
