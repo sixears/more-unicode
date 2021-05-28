@@ -6,6 +6,7 @@ module Data.MoreUnicode
   , module Data.MoreUnicode.Char
   , module Data.MoreUnicode.Containers
   , module Data.MoreUnicode.Doc
+  , module Data.MoreUnicode.Either
   , module Data.MoreUnicode.Function
   , module Data.MoreUnicode.Functor
   , module Data.MoreUnicode.Lens
@@ -27,6 +28,7 @@ import Data.MoreUnicode.Bool
 import Data.MoreUnicode.Char
 import Data.MoreUnicode.Containers
 import Data.MoreUnicode.Doc
+import Data.MoreUnicode.Either
 import Data.MoreUnicode.Function
 import Data.MoreUnicode.Functor
 import Data.MoreUnicode.Lens
