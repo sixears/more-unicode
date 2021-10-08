@@ -1,5 +1,3 @@
-{-# LANGUAGE UnicodeSyntax #-}
-
 module Data.MoreUnicode.Text
   ( 𝕋 )
 where

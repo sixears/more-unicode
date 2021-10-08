@@ -7,7 +7,7 @@ name:                more-unicode
 -- PVP summary:      +-+------- breaking API changes
 --                   | | +----- non-breaking API additions
 --                   | | | +--- code changes with no API change
-version:             0.0.15.0
+version:             0.0.16.0
 
 -- A short (one-line) description of the package.
 synopsis:            More unicode symbols
@@ -70,7 +70,13 @@ library
   -- modules included in this library but not exported.
   other-modules:
 
-  default-extensions: NoImplicitPrelude
+  default-extensions: FlexibleContexts
+                    , NoImplicitPrelude
+                    , OverloadedStrings
+                    , PatternSynonyms
+                    , RankNTypes
+                    , UnicodeSyntax
+
   -- LANGUAGE extensions used by modules in this package.
   other-extensions:
 

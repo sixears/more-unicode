@@ -1,5 +1,3 @@
-{-# LANGUAGE UnicodeSyntax #-}
-
 module Data.MoreUnicode.Tasty
   ( (≟), (≣) )
 where
@@ -27,7 +25,7 @@ import Test.Tasty.QuickCheck  ( Property, (===) )
 infix 1 ≟
 (≟) ∷ (Eq α, Show α) ⇒ α → α → Assertion
 (≟) = (@=?)
-  
+
 ----------------------------------------
 
 {- | synonym for `===` -}

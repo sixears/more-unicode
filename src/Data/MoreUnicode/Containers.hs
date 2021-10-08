@@ -1,7 +1,3 @@
-{-# LANGUAGE NoImplicitPrelude #-}
-{-# LANGUAGE RankNTypes        #-}
-{-# LANGUAGE UnicodeSyntax     #-}
-
 module Data.MoreUnicode.Containers
   ( (∈) )
 where

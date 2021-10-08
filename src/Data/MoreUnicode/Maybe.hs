@@ -1,6 +1,3 @@
-{-# LANGUAGE PatternSynonyms #-}
-{-# LANGUAGE UnicodeSyntax   #-}
-
 module Data.MoreUnicode.Maybe
   ( 𝕄, pattern 𝕵, pattern 𝕹 )
 where

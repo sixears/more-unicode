@@ -1,5 +1,3 @@
-{-# LANGUAGE UnicodeSyntax #-}
-
 module Data.MoreUnicode.Semigroup
   ( (◇) )
 where

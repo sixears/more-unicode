@@ -1,6 +1,3 @@
-{-# LANGUAGE PatternSynonyms #-}
-{-# LANGUAGE UnicodeSyntax   #-}
-
 module Data.MoreUnicode.Either
   ( 𝔼, pattern 𝕷, pattern 𝕽 )
 where

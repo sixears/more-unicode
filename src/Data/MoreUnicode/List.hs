@@ -1,5 +1,3 @@
-{-# LANGUAGE UnicodeSyntax #-}
-
 module Data.MoreUnicode.List
   ( (⋮) )
 where
@@ -16,4 +14,3 @@ infixr 5 ⋮
 x ⋮ xs = x :| toList xs
 
 -- that's all, folks! ----------------------------------------------------------
-

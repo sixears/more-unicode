@@ -1,6 +1,3 @@
-{-# LANGUAGE PatternSynonyms #-}
-{-# LANGUAGE UnicodeSyntax   #-}
-
 module Data.MoreUnicode.Bool
   ( 𝔹, pattern 𝕱, pattern 𝕿 )
 where

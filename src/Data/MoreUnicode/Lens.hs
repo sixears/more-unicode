@@ -1,8 +1,5 @@
-{-# LANGUAGE FlexibleContexts #-}
-{-# LANGUAGE UnicodeSyntax    #-}
-
 module Data.MoreUnicode.Lens
-  ( (⊣), (⫣), (⫥), (⊥), (⊢), (⊧), (⊩), (⩼), (⊮), (##), (⋖), (⋗)
+  ( (⊣), (⫣), (⫥), (⊥), (⊢), (⊧), (⊩), (⩼), (⊮), (##), (⋖), (⋗), (⨦), (?+)
   , addMaybe, tindex )
 where
 
@@ -12,7 +9,7 @@ import Prelude  ( Int, fromIntegral )
 
 import Control.Applicative  ( Applicative )
 import Data.Function        ( flip )
-import Data.Maybe           ( Maybe )
+import Data.Maybe           ( fromMaybe )
 import Data.Monoid          ( First )
 import Data.Traversable     ( Traversable )
 
@@ -36,6 +33,7 @@ import Control.Lens.Traversal  ( traversed )
 ------------------------------------------------------------
 
 import Data.MoreUnicode.Applicative  ( (∤) )
+import Data.MoreUnicode.Maybe        ( 𝕄, pattern 𝕵 )
 import Data.MoreUnicode.Natural      ( ℕ )
 
 --------------------------------------------------------------------------------
@@ -67,18 +65,18 @@ infixr 4 ⊧
      value. -}
 
 infixr 4 ⊩
-(⊩) ∷ ASetter σ τ α (Maybe β) → β → σ → τ
+(⊩) ∷ ASetter σ τ α (𝕄 β) → β → σ → τ
 (⊩) = (?~)
 
 infixl 8 ⩼
-(⩼) ∷ σ → Getting (First α) σ α → Maybe α
+(⩼) ∷ σ → Getting (First α) σ α → 𝕄 α
 (⩼) = (^?)
 
-addMaybe ∷ ASetter σ τ (Maybe α) (Maybe α) → Maybe α → σ → τ
+addMaybe ∷ ASetter σ τ (𝕄 α) (𝕄 α) → 𝕄 α → σ → τ
 addMaybe s a = s ⊧ (∤ a)
 
 infixr 4 ⊮
-(⊮) ∷ ASetter σ τ (Maybe α) (Maybe α) → Maybe α → σ → τ
+(⊮) ∷ ASetter σ τ (𝕄 α) (𝕄 α) → 𝕄 α → σ → τ
 (⊮) = addMaybe
 
 {- | DEPRECATED (##) "use `⫥` instead" -}
@@ -99,9 +97,20 @@ infixr 8 ⊥
 
 ----------------------------------------
 
-(⋖) ∷ Cons σ σ α α => α -> σ -> σ 
+(⋖) ∷ Cons σ σ α α => α -> σ -> σ
 (⋖) = (<|)
-(⋗) ∷ Snoc σ σ α α => σ -> α -> σ 
+(⋗) ∷ Snoc σ σ α α => σ -> α -> σ
 (⋗) = (|>)
+
+----------------------------------------
+
+infixr 4 ?+
+{- | Defaulting of a `Maybe` value; that is, assign `Just` a value to the
+     target iff it is a `Nothing`. -}
+(?+) ∷ ∀ α σ τ . ASetter σ τ (𝕄 α) (𝕄 α) → α → σ → τ
+b ?+ y = b ⊧ (𝕵 ∘ fromMaybe y)
+infixr 4 ⨦
+(⨦) ∷ ∀ α σ τ . ASetter σ τ (𝕄 α) (𝕄 α) → α → σ → τ
+(⨦) = (?+)
 
 -- that's all, folks! ----------------------------------------------------------
