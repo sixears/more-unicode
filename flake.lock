@@ -5,14 +5,18 @@
         "flake-utils": "flake-utils"
       },
       "locked": {
-        "lastModified": 1668251892,
-        "narHash": "sha256-LmT+Q7R4xThRw+jxsmZ/AJG5T9yCqt1ENkKjdvD1QfE=",
-        "path": "/home/martyn/src/flake-build-utils",
-        "type": "path"
+        "lastModified": 1668705194,
+        "narHash": "sha256-ZSzwjWX0IuFelgjX7YWJB9x1nYv11RYrUkHvmG1+YXo=",
+        "owner": "sixears",
+        "repo": "flake-build-utils",
+        "rev": "d65bec515df7b1153b98c06e3f91e5f50adcda81",
+        "type": "github"
       },
       "original": {
-        "path": "/home/martyn/src/flake-build-utils",
-        "type": "path"
+        "owner": "sixears",
+        "ref": "r1.0.0.11",
+        "repo": "flake-build-utils",
+        "type": "github"
       }
     },
     "flake-utils": {
