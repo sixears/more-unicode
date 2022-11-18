@@ -1,3 +1,7 @@
+0.0.17.9 2022-11-18
+===================
+- flake-build-utils->1.0.0.12
+
 0.0.17.8 2022-11-17
 ===================
 - use callPackage to avoid callCabal2nix/IFD
