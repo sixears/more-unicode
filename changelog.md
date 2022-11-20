@@ -1,3 +1,7 @@
+0.0.17.12 2022-11-20
+====================
+- fix version ID
+
 0.0.17.11 2022-11-19
 ====================
 - include mapPkg in callPackage args

@@ -20,7 +20,7 @@
         in
           mkDerivation {
             pname = "more-unicode";
-            version = "0.0.17.8";
+            version = "0.0.17.12";
             src = ./.;
             libraryHaskellDepends = [
               base base-unicode-symbols containers lens mono-traversable
