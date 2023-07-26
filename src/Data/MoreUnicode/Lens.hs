@@ -1,6 +1,6 @@
 module Data.MoreUnicode.Lens
-  ( (⊣), (⫣), (⫥), (⊥), (⊢), (⊧), (⊩), (⩼), (⊮), (##), (⋖), (⋗), (⨦), (?+)
-  , addMaybe, tindex )
+  ( (⊣), (⫣), (⫤), (⫥), (⊥), (⊢), (⊧), (⊩), (⩼), (⊮), (##), (⋖), (⋗), (⨦)
+  , (?+), addMaybe, tindex )
 where
 
 import Prelude  ( Int, fromIntegral )
@@ -19,6 +19,7 @@ import Data.Function.Unicode  ( (∘) )
 
 -- lens --------------------------------
 
+import Control.Lens.At         ( At, Index, IxValue, at )
 import Control.Lens.Cons       ( Cons, Snoc, (|>), (<|) )
 import Control.Lens.Fold       ( (^?) )
 import Control.Lens.Getter     ( Getting, (^.) )
@@ -52,6 +53,10 @@ d ⫣ l = d ^. from l
 infixr 8 ⫥
 (⫥) ∷ α → AReview δ α → δ
 (⫥) = flip (#)
+
+infixr 8 ⫤
+(⫤) ∷ At δ ⇒ δ → Index δ → 𝕄 (IxValue δ)
+x ⫤ y = x ⊣ at y
 
 infixr 4 ⊢
 (⊢) ∷ ASetter σ τ α β → β → σ → τ

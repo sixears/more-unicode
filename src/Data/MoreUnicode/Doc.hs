@@ -4,7 +4,7 @@ where
 
 -- Prettyprinter -----------------------
 
-import Data.Text.Prettyprint.Doc  ( Doc, (<+>) )
+import Prettyprinter  ( Doc, (<+>) )
 
 --------------------------------------------------------------------------------
 
