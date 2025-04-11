@@ -1,24 +1,61 @@
+{-# LANGUAGE UnicodeSyntax #-}
 module Data.MoreUnicode.Containers
-  ( (∈) )
-where
+  ( Member((∈))
+  ) where
 
 -- base --------------------------------
 
-import Data.Ord  ( Ord )
+import Data.Foldable qualified as Foldable
 
--- containers --------------------------
+import Data.Eq       ( Eq )
+import Data.Foldable ( Foldable )
+import Data.Kind     ( Type )
+import Data.Word     ( Word8 )
 
-import qualified  Data.Map  as  Map
+-- bytestring --------------------------
+
+import Data.ByteString      qualified as BS
+import Data.ByteString.Lazy qualified as BSL
+
+-- text --------------------------------
+
+import Data.Text      qualified as Text
+import Data.Text.Lazy qualified as LazyText
 
 ------------------------------------------------------------
 --                     local imports                      --
 ------------------------------------------------------------
 
-import Data.MoreUnicode.Bool  ( 𝔹 )
+import Data.MoreUnicode.Bool ( 𝔹 )
+import Data.MoreUnicode.Char ( ℂ )
+import Data.MoreUnicode.Text ( 𝕋 )
 
 --------------------------------------------------------------------------------
 
-(∈) ∷ ∀ κ α . Ord κ ⇒ κ → Map.Map κ α → 𝔹
-(∈) = Map.member
+class Member α where
+  {-| What do items of this container type look like? -}
+  type MemberItem α ∷ Type
+  {-| "is element of" -}
+  (∈) ∷ Eq (MemberItem α) ⇒ MemberItem α → α → 𝔹
+
+instance Foldable ψ ⇒ Member (ψ β) where
+  type MemberItem (ψ β) = β
+  (∈) = Foldable.elem
+
+instance Member 𝕋 where
+  type MemberItem 𝕋 = ℂ
+  (∈) = Text.elem
+
+instance Member LazyText.Text where
+  type MemberItem (LazyText.Text) = ℂ
+  (∈) = LazyText.elem
+
+instance Member BS.ByteString where
+  type MemberItem BS.ByteString = Word8
+  (∈) = BS.elem
+
+instance Member BSL.ByteString where
+  type MemberItem BSL.ByteString = Word8
+  (∈) = BSL.elem
 
 -- that's all, folks! ----------------------------------------------------------

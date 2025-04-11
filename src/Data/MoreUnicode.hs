@@ -13,15 +13,16 @@ module Data.MoreUnicode
   , module Data.MoreUnicode.List
   , module Data.MoreUnicode.Maybe
   , module Data.MoreUnicode.Monad
-  , module Data.MoreUnicode.Monoid
   , module Data.MoreUnicode.MonoTraversable
+  , module Data.MoreUnicode.Monoid
   , module Data.MoreUnicode.Natural
+  , module Data.MoreUnicode.Num
+  , module Data.MoreUnicode.Ord
   , module Data.MoreUnicode.Semigroup
   , module Data.MoreUnicode.String
   , module Data.MoreUnicode.Tasty
   , module Data.MoreUnicode.Text
-  )
-where
+  ) where
 
 import Data.MoreUnicode.Applicative
 import Data.MoreUnicode.Bool
@@ -38,6 +39,8 @@ import Data.MoreUnicode.Monad
 import Data.MoreUnicode.Monoid
 import Data.MoreUnicode.MonoTraversable
 import Data.MoreUnicode.Natural
+import Data.MoreUnicode.Num
+import Data.MoreUnicode.Ord
 import Data.MoreUnicode.Semigroup
 import Data.MoreUnicode.String
 import Data.MoreUnicode.Tasty

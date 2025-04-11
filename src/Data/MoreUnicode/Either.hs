@@ -1,10 +1,20 @@
+{-# LANGUAGE UnicodeSyntax #-}
 module Data.MoreUnicode.Either
-  ( 𝔼, pattern 𝕷, pattern 𝕽 )
-where
+  ( 𝔼
+  , pattern 𝕷
+  , pattern 𝕽
+  , ӿ
+  ) where
+
+import Prelude ( error )
 
 -- base --------------------------------
 
-import Data.Either  ( Either( Left, Right ) )
+import Data.Either ( Either(Left, Right) )
+
+-- data-textual ------------------------
+
+import Data.Textual ( Printable, toString )
 
 --------------------------------------------------------------------------------
 
@@ -19,5 +29,9 @@ pattern 𝕽 b ← Right b
         where 𝕽 b = Right b
 
 {-# COMPLETE 𝕷, 𝕽 #-}
+
+{-| used for errors; converts 𝕷 to a `raise` (e.g., use on MonadError) -}
+ӿ ∷ Printable ε ⇒ 𝔼 ε α → α
+ӿ = \ case 𝕷 e → error (toString e); 𝕽 r → r
 
 -- that's all, folks! ----------------------------------------------------------

@@ -7,7 +7,7 @@ name:                more-unicode
 -- PVP summary:      +-+------- breaking API changes
 --                   | | +----- non-breaking API additions
 --                   | | | +--- code changes with no API change
-version:             0.0.19.0
+version:             0.0.20.0
 
 -- A short (one-line) description of the package.
 synopsis:            More unicode symbols
@@ -62,6 +62,8 @@ library
                  , Data.MoreUnicode.Monoid
                  , Data.MoreUnicode.MonoTraversable
                  , Data.MoreUnicode.Natural
+                 , Data.MoreUnicode.Num
+                 , Data.MoreUnicode.Ord
                  , Data.MoreUnicode.Semigroup
                  , Data.MoreUnicode.String
                  , Data.MoreUnicode.Tasty
@@ -70,19 +72,26 @@ library
   -- modules included in this library but not exported.
   other-modules:
 
-  default-extensions: FlexibleContexts
+  default-extensions: ConstrainedClassMethods
+                    , FlexibleContexts
+                    , FlexibleInstances
+                    , ImportQualifiedPost
+                    , LambdaCase
                     , NoImplicitPrelude
                     , OverloadedStrings
                     , PatternSynonyms
                     , RankNTypes
+                    , TypeFamilies
+                    , TypeSynonymInstances
                     , UnicodeSyntax
 
   -- LANGUAGE extensions used by modules in this package.
   other-extensions:
 
   -- Other library packages from which modules are imported.
-  build-depends: base, base-unicode-symbols, containers, lens, mono-traversable
-               , prettyprinter, tasty-hunit, tasty-quickcheck, text
+  build-depends: base, base-unicode-symbols, bytestring, containers
+               , data-textual, lens, mono-traversable, prettyprinter
+               , tasty-hunit, tasty-quickcheck, text
 
   -- Directories containing source files.
   hs-source-dirs:      src
