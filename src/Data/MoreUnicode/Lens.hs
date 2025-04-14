@@ -50,7 +50,7 @@ import Control.Lens.Traversal ( traversed )
 ------------------------------------------------------------
 
 import Data.MoreUnicode.Applicative ( (∤) )
-import Data.MoreUnicode.Maybe       ( 𝕄, pattern 𝕵 )
+import Data.MoreUnicode.Maybe       ( 𝕄, pattern 𝓙 )
 import Data.MoreUnicode.Natural     ( ℕ )
 
 --------------------------------------------------------------------------------
@@ -129,7 +129,7 @@ infixr 4 ?+
 {- | Defaulting of a `Maybe` value; that is, assign `Just` a value to the
      target iff it is a `Nothing`. -}
 (?+) ∷ ∀ α σ τ . ASetter σ τ (𝕄 α) (𝕄 α) → α → σ → τ
-b ?+ y = b ⊧ (𝕵 ∘ fromMaybe y)
+b ?+ y = b ⊧ (𝓙 ∘ fromMaybe y)
 infixr 4 ⨦
 (⨦) ∷ ∀ α σ τ . ASetter σ τ (𝕄 α) (𝕄 α) → α → σ → τ
 (⨦) = (?+)
