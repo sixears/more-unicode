@@ -6,13 +6,20 @@ module Data.MoreUnicode.Either
   , pattern 𝕷
   , pattern 𝕽
   , ӿ
+  , ⵥ
   ) where
 
 import Prelude ( error )
 
 -- base --------------------------------
 
-import Data.Either ( Either(Left, Right) )
+import Data.Either   ( Either(Left, Right), either )
+import Data.Function ( id )
+import Text.Show     ( Show(show) )
+
+-- base-unicode-symbols ----------------
+
+import Data.Function.Unicode ( (∘) )
 
 -- data-textual ------------------------
 
@@ -52,5 +59,8 @@ pattern 𝕽 b ← Right b
 {-| used for errors; converts 𝓛 to a `raise` (e.g., use on MonadError) -}
 ӿ ∷ Printable ε ⇒ 𝔼 ε α → α
 ӿ = \ case 𝓛 e → error (toString e); 𝓡 r → r
+
+ⵥ ∷ Show ω ⇒ 𝔼 ω ν → ν
+ⵥ = either (error ∘ show) id
 
 -- that's all, folks! ----------------------------------------------------------
