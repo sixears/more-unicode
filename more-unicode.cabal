@@ -7,7 +7,7 @@ name:                more-unicode
 -- PVP summary:      +-+------- breaking API changes
 --                   | | +----- non-breaking API additions
 --                   | | | +--- code changes with no API change
-version:             0.0.23.0
+version:             0.0.24.0
 
 -- A short (one-line) description of the package.
 synopsis:            More unicode symbols
@@ -55,6 +55,7 @@ library
                  , Data.MoreUnicode.Either
                  , Data.MoreUnicode.Function
                  , Data.MoreUnicode.Functor
+                 , Data.MoreUnicode.Identity
                  , Data.MoreUnicode.Lens
                  , Data.MoreUnicode.List
                  , Data.MoreUnicode.Maybe
@@ -90,7 +91,7 @@ library
 
   -- Other library packages from which modules are imported.
   build-depends: base, base-unicode-symbols, bytestring, containers
-               , data-textual, lens, mono-traversable, prettyprinter
+               , data-textual, lens, mono-traversable, mtl, prettyprinter
                , tasty-hunit, tasty-quickcheck, text
 
   -- Directories containing source files.

@@ -32,6 +32,7 @@ import Data.MoreUnicode.Doc
 import Data.MoreUnicode.Either
 import Data.MoreUnicode.Function
 import Data.MoreUnicode.Functor
+import Data.MoreUnicode.Identity
 import Data.MoreUnicode.Lens
 import Data.MoreUnicode.List
 import Data.MoreUnicode.Maybe
