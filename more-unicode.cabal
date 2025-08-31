@@ -7,7 +7,7 @@ name:                more-unicode
 -- PVP summary:      +-+------- breaking API changes
 --                   | | +----- non-breaking API additions
 --                   | | | +--- code changes with no API change
-version:             0.0.24.0
+version:             0.0.25.0
 
 -- A short (one-line) description of the package.
 synopsis:            More unicode symbols
@@ -51,11 +51,11 @@ library
                  , Data.MoreUnicode.Bool
                  , Data.MoreUnicode.Char
                  , Data.MoreUnicode.Containers
+                 , Data.MoreUnicode.Default
                  , Data.MoreUnicode.Doc
                  , Data.MoreUnicode.Either
                  , Data.MoreUnicode.Function
                  , Data.MoreUnicode.Functor
-                 , Data.MoreUnicode.Identity
                  , Data.MoreUnicode.Lens
                  , Data.MoreUnicode.List
                  , Data.MoreUnicode.Maybe
@@ -74,6 +74,7 @@ library
   other-modules:
 
   default-extensions: ConstrainedClassMethods
+                    , ConstraintKinds
                     , FlexibleContexts
                     , FlexibleInstances
                     , ImportQualifiedPost
@@ -91,8 +92,8 @@ library
 
   -- Other library packages from which modules are imported.
   build-depends: base, base-unicode-symbols, bytestring, containers
-               , data-textual, lens, mono-traversable, mtl, prettyprinter
-               , tasty-hunit, tasty-quickcheck, text
+               , data-default, data-textual, lens, mono-traversable, mtl
+               , prettyprinter, tasty-hunit, tasty-quickcheck, text
 
   -- Directories containing source files.
   hs-source-dirs:      src

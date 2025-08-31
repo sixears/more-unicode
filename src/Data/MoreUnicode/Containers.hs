@@ -1,6 +1,6 @@
 {-# LANGUAGE UnicodeSyntax #-}
 module Data.MoreUnicode.Containers
-  ( Member((∈))
+  ( Member((∈), (∉))
   ) where
 
 -- base --------------------------------
@@ -11,6 +11,10 @@ import Data.Eq       ( Eq )
 import Data.Foldable ( Foldable )
 import Data.Kind     ( Type )
 import Data.Word     ( Word8 )
+
+-- base-unicode-symbols ----------------
+
+import Data.Function.Unicode  ( (∘) )
 
 -- bytestring --------------------------
 
@@ -26,7 +30,7 @@ import Data.Text.Lazy qualified as LazyText
 --                     local imports                      --
 ------------------------------------------------------------
 
-import Data.MoreUnicode.Bool ( 𝔹 )
+import Data.MoreUnicode.Bool ( 𝔹, ﬧ )
 import Data.MoreUnicode.Char ( ℂ )
 import Data.MoreUnicode.Text ( 𝕋 )
 
@@ -37,6 +41,9 @@ class Member α where
   type MemberItem α ∷ Type
   {-| "is element of" -}
   (∈) ∷ Eq (MemberItem α) ⇒ MemberItem α → α → 𝔹
+  {-| "is not element of" -}
+  (∉) ∷ Eq (MemberItem α) ⇒ MemberItem α → α → 𝔹
+  (∉) = \ x → ﬧ ∘ (x ∈)
 
 instance Foldable ψ ⇒ Member (ψ β) where
   type MemberItem (ψ β) = β

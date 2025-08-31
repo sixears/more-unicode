@@ -1,6 +1,7 @@
 {-# LANGUAGE UnicodeSyntax #-}
 module Data.MoreUnicode.Monad
-  ( (≪)
+  ( 𝕀, pattern 𝕀
+  , (≪)
   , (≫)
   , (⋘)
   , (⋙)
@@ -12,6 +13,8 @@ module Data.MoreUnicode.Monad
   , (⮚)
   , (⮜)
   , (⮞)
+  , (⮆), (⮄)
+  , 𝕣
   ) where
 
 -- base --------------------------------
@@ -22,6 +25,19 @@ import Data.Foldable    ( Foldable )
 import Data.Function    ( flip )
 import Data.Functor     ( Functor, fmap )
 import Data.Traversable ( Traversable )
+
+-- mtl ---------------------------------
+
+import Control.Monad.Identity  ( Identity( Identity ), IdentityT, runIdentity
+                               , runIdentityT )
+import Control.Monad.Reader    ( ReaderT, runReaderT )
+import Control.Monad.State     ( StateT, runStateT )
+
+------------------------------------------------------------
+--                     local imports                      --
+------------------------------------------------------------
+
+import Data.MoreUnicode.Default  ( Ð, ð )
 
 --------------------------------------------------------------------------------
 
@@ -82,5 +98,60 @@ x ⩥ y = fmap (≫ y) x
 {-| unicode alias for `forM_` -}
 (⮘) ∷ (Monad η, Foldable φ) ⇒ φ α → (α → η ()) → η ()
 (⮘) = forM_
+
+--------------------------------------------------------------------------------
+
+{-| Unicode alias for the Identity Monad -}
+type 𝕀 = Identity
+
+{-| Unicode alias for the Identity Monad data c'tor -}
+pattern 𝕀 ∷ α → 𝕀 α
+pattern 𝕀 a ← Identity a
+  where 𝕀 a = Identity a
+{-# COMPLETE 𝕀 #-}
+
+------------------------------------------------------------
+
+class RunnableMonad η where
+  type MonadRunType    η
+  type MonadResultType η
+
+  (⮆) ∷ MonadRunType η → η → MonadResultType η
+  (⮄) ∷ η → MonadRunType η → MonadResultType η
+  (⮄) = flip (⮆)
+  𝕣   ∷ Ð (MonadRunType η) => η → MonadResultType η
+  𝕣   = (ð ⮆)
+
+--------------------
+
+instance RunnableMonad (𝕀 ω) where
+  type MonadRunType (𝕀 ω) = ()
+  type MonadResultType (𝕀 ω) = ω
+
+  () ⮆ ia = runIdentity ia
+
+--------------------
+
+instance RunnableMonad (IdentityT ζ ω) where
+  type MonadRunType (IdentityT ζ ω) = ()
+  type MonadResultType (IdentityT ζ ω) = ζ ω
+
+  () ⮆ ia = runIdentityT ia
+
+--------------------
+
+instance RunnableMonad (ReaderT ρ ζ ω) where
+  type MonadRunType (ReaderT ρ ζ ω) = ρ
+  type MonadResultType (ReaderT ρ ζ ω) = ζ ω
+
+  r ⮆ m = runReaderT m r
+
+--------------------
+
+instance RunnableMonad (StateT σ ζ ω) where
+  type MonadRunType (StateT σ ζ ω) = σ
+  type MonadResultType (StateT σ ζ ω) = ζ (ω, σ)
+
+  s ⮆ m = runStateT m s
 
 -- that's all, folks! ----------------------------------------------------------
