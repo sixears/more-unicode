@@ -5,6 +5,7 @@ module Data.MoreUnicode
   , module Data.MoreUnicode.Bool
   , module Data.MoreUnicode.Char
   , module Data.MoreUnicode.Containers
+  , module Data.MoreUnicode.Default
   , module Data.MoreUnicode.Doc
   , module Data.MoreUnicode.Either
   , module Data.MoreUnicode.Function
@@ -28,6 +29,7 @@ import Data.MoreUnicode.Applicative
 import Data.MoreUnicode.Bool
 import Data.MoreUnicode.Char
 import Data.MoreUnicode.Containers
+import Data.MoreUnicode.Default
 import Data.MoreUnicode.Doc
 import Data.MoreUnicode.Either
 import Data.MoreUnicode.Function
